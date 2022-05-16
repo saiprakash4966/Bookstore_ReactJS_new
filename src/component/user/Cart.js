@@ -48,11 +48,13 @@ class Cart extends Component {
             btnDisable: true,
             color: "grey",
             totalPrice: "",
+            totalValue:0,
             disableFlag: false,
             userData: [], customerData: "",
             addressType: "",
             orderID: '', visibilityOfDialogBox: false,
             discountTotal: "", discountCoupon: 0, coupons: [], couponStatus: "", couponPrice: 0, coupon: "", index: 0
+       
         }
     }
 
@@ -143,13 +145,17 @@ class Cart extends Component {
     }
 
     getMyOrder = () => {
-        new AdminService().placedOrder(this.state.totalPrice, this.state.couponPrice).then(response => {
-            this.setState({
-                orderID: response.data.data
-            }, () => this.props.history.push(`/orders/successful/${this.state.orderID}`))
-        }).catch((error) => {
-            console.log(error)
-        })
+        this.setState({
+            orderID: 4321123
+        }, () => this.props.history.push(`/orders/successful/${this.state.orderID}`))
+        // new AdminService().placedOrder(this.state.totalPrice).then(response => {
+        //     this.setState({
+        //         orderID: response.data.data
+        //     }, () => this.props.history.push(`/orders/successful/${this.state.orderID}`))
+        // }).catch((error) => {
+        //     console.log(error)
+        // })
+        // console.log('get my order')
     }
 
 
@@ -176,19 +182,19 @@ class Cart extends Component {
             addressType: this.state.addressType,
         }
 
-        new AdminService().getDetails(data).then(response => {
-            console.log(response)
-        }).catch((error) => {
-            console.log(error)
-        })
+        // new AdminService().getDetails(data).then(response => {
+        //     console.log(response)
+        // }).catch((error) => {
+        //     console.log(error)
+        // })
     }
 
 
     handleCheckOut = () => {
-
+        console.log('handle checkout')
         this.getMyOrder()
         this.getDetails()
-        this.addCoupon()
+        //this.addCoupon()
     }
 
     handleFocus = () => {
@@ -229,11 +235,11 @@ class Cart extends Component {
 
     setTotalValue = () => {
         let newVar = this.state.checkoutData.map((books, index) => {
-            return (books.bookDetails.bookPrice * books.quantity)
+            return (books.bookPrice * books.quantity)
         });
         this.state.totalPrice = newVar.reduce((a, b) => a + b)
         this.setState({
-            discountCoupon: this.state.totalPrice
+            totalValue: this.state.totalPrice
         })
     }
 
@@ -346,7 +352,7 @@ class Cart extends Component {
                                                           quantity={books.quantity}
                                                           books={books} index={index}/>
                                     }) : <div className="nocartitems">
-                                        <img className="noitemsimage" src={require("../../asset/emptyCart.png")}
+                                        <img className="noitemsimage" src={require("../../assets/emptyCart.png")}
                                              alt="Cart Is Empty"/>
                                         <h3 id="emptycart">Please Add Books To Cart</h3>
                                     </div>
@@ -553,7 +559,7 @@ class Cart extends Component {
                                     </div>
 
 
-                                    <div className="coupon-div">
+                                    {/* <div className="coupon-div">
                                         <b>Coupons</b>
                                         <div className="coupon-div1">
                                             <LocalOfferOutlinedIcon id="offer-icon"/>
@@ -570,7 +576,7 @@ class Cart extends Component {
                                                 </div>
                                             }
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <Divider/>
                                     <div>
                                         <p><b>Price details</b></p>
@@ -578,14 +584,14 @@ class Cart extends Component {
                                             <p> Sub Total Price: </p>
                                             <p className="sub-price">Rs. {this.state.totalPrice}</p>
                                         </div>
-                                        <div className="price-sub-div">
+                                        {/* <div className="price-sub-div">
                                             <p> Discount Price: </p>
                                             <p className="discount-price">Rs. {this.state.couponPrice}</p>
-                                        </div>
+                                        </div> */}
                                         <hr className="horizontal-line"/>
                                         <div className="price-main-div">
                                             <b>Total price: </b>
-                                            <b className="total-price">Rs.{this.state.discountCoupon}</b>
+                                            <b className="total-price">Rs.{this.state.totalValue}</b>
                                         </div>
 
                                     </div>
