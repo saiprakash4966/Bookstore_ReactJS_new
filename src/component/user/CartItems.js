@@ -16,7 +16,7 @@ class CartItems extends Component {
             disableDecrementButton:false,
             disableIncrementButton:true,
             totalPrice:this.props.books.bookPrice,
-            imageURl:this.props.books.imageURl
+            imageURL:this.props.books.imageURL
         }
     }
 
@@ -28,14 +28,22 @@ class CartItems extends Component {
         this.disableIncrementButton(type)
     }
 
+    // remove = (id) => {
+    //     console.log('remove')
+    //     new AdminService().remove(id).then(response => {
+    //        // this.props.handleCart()
+    //        console.log(id);
+    //     }).catch((error) => {
+    //         // console.log(error)
+    //     })
+    // }
     remove = (id) => {
-        new AdminService().remove(id).then(response => {
+        new AdminService().remove(id); //.then(response => {
             this.props.handleCart()
-        }).catch((error) => {
+        //}).catch((error) => {
             // console.log(error)
-        })
+       // })
     }
-
     onclick(type, id, bookid) {
         if (this.state.count >= 0) {
             this.setState({
@@ -111,7 +119,7 @@ class CartItems extends Component {
                     <Typography component="h2" id="bookname1">{this.props.books.bookName}</Typography>
                     <Typography variant="body2" color="textSecondary" id="authorName">{this.props.books.authorName}</Typography>
                     <Typography component="h2" id="cost">Rs.
-                        {this.props.price}</Typography>
+                        {this.props.books.bookPrice}</Typography>
                     <div className="plusminusdiv">
                         <IconButton id="minus" disabled={this.state.disableIncrementButton}
                                     onClick={() => this.onclick('sub', this.props.books.bookID, this.props.books.id,this.props.books.bookPrice)}>
