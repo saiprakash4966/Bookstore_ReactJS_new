@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import OrderSuccessfully from '../../asset/Order-placed-successfully.png'
+import OrderSuccessfully from '../../assets/Order-placed-successfully.png'
 import Button from "@material-ui/core/Button";
 import '../../css/OrderSuccessful.css'
 import data from '../../data/data.json'
@@ -12,14 +12,20 @@ class OrderSuccessful extends Component {
 
     handleChange = () => {
         this.props.history.push("/")
+       
+            this.setState({
+                cartItems: []
+            })
+            localStorage.setItem("cartItems",JSON.stringify([]));
+        
     }
 
     render() {
         let user = localStorage.getItem('Authorization');
-        if(user == "null" || user == "undefined" || !user){
-            return <SignUp/>
-        }
-        else
+        // if(user == "null" || user == "undefined" || !user){
+        //     return <SignUp/>
+        // }
+       // else
         return (
             <div>
                 <CbHeader/>

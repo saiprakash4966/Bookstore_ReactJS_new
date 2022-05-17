@@ -40,28 +40,49 @@ class CustomCard extends Component {
     }
 
     changeText = () => {
-        if (this.state.title === "GO TO CART") {
+        if (this.state.title1 === "GO TO CART") {
             this.props.history.push("/cart");
         }
-        if (this.state.title !== "GO TO CART") {
+        if (this.state.title1 !== "GO TO CART") {
             new AdminService().addToCart(this.myCartData());
             this.setState({
-                title: "GO TO CART", color: "rgb(51,113,181)"
+                title1: "GO TO CART", color: "rgb(51,113,181)"
             })
             this.props.cartReference.current.handleBadgeCount(this.state.badgeSize, "addButton");
         }
     }
-
+    changeText1 = () => {
+        if (this.state.title2 === "GO TO WISHLIST") {
+            this.props.history.push("/wishlist");
+        }
+        if (this.state.title2 !== "GO TO WISHLIST") {
+            new AdminService().addToWishlist(this.myCartData());
+            this.setState({
+                title2: "GO TO WISHLIST", color: "rgb(51,113,181)"
+            })
+            this.props.cartReference.current.handleBadgeCount1(this.state.badgeSize, "addWishlistButton");
+        }
+    }
+   
     componentDidMount() {
         // let user = localStorage.getItem('Authorization')
         // if(user !== null) {
             this.handleButtonState()
+            this.handleWishlistButtonState()
+
         // }
     }
 
     handleButtonState = () => {
         //new AdminService().myCart().then(response => {
             this.handleButton(new AdminService().myCart());
+        //}).catch((error) => {
+          //  console.log(error)
+        // })
+    }
+    handleWishlistButtonState = () => {
+        //new AdminService().myCart().then(response => {
+            this.handleWishlistButton(new AdminService().myWishlist());
         //}).catch((error) => {
           //  console.log(error)
         // })
@@ -75,12 +96,27 @@ class CustomCard extends Component {
           
             if (data.id === this.props.book.id) {
                 this.setState({
-                    title: "GO TO CART", color: "rgb(51,113,181)"
+                    title1: "GO TO CART", color: "rgb(51,113,181)"
                 })
             }
             return null
         })
         this.props.cartReference.current.handleBadgeCount(data.length, "updateButton")
+    }
+    handleWishlistButton = (data) => {
+        this.setState({
+            badgeSize: data.length
+        })
+        data.filter(data => {
+          
+            if (data.id === this.props.book.id) {
+                this.setState({
+                    title2: "GO TO WISHLIST", color: "rgb(51,113,181)"
+                })
+            }
+            return null
+        })
+        this.props.cartReference.current.handleBadgeCount1(data.length, "updateWishlistButton")
     }
 
     render() {
@@ -121,7 +157,7 @@ class CustomCard extends Component {
                         : {backgroundColor: this.state.color, width: "60%", marginBottom: "2%", color: "#fff"}}>
                         {this.state.title1}
                     </Button>
-                    <Button onClick={this.changeText} value={this.state.title2} style={book.quantity === 0
+                    <Button onClick={this.changeText1} value={this.state.title2} style={book.quantity === 0
                         ? {backgroundColor: "#0A0102", pointerEvents: "none", marginBottom: "2%", width: "60%"}
                         : {backgroundColor: "#FFFFFF", width: "60%", marginBottom: "2%", color: "black", border: "1px solid black"}}>
                         {this.state.title2}

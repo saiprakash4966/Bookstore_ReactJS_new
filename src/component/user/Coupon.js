@@ -72,7 +72,7 @@ class Coupon extends Component {
                                 </Typography>
                             </div>
                             <div className="image-coupon">
-                                <img src={require("../../asset/nooffer.png")} alt="Sorry, currently no coupons available"/>
+                                <img src={require("../../assets/nooffer.png")} alt="Sorry, currently no coupons available"/>
                             </div>
                         </Card>
 

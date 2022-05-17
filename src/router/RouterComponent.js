@@ -3,6 +3,7 @@ import {Route, Switch } from 'react-router-dom';
 import AdminPage from '../component/admin/AdminPage';
 import HomePage from "../component/user/HomePage";
 import Cart from "../component/user/Cart";
+import Wishlist from '../component/user/Wishlist';
 import SignUp from "../component/user/SignUp";
 import OrderSuccessful from "../component/user/OrderSuccessful";
 import ForgotPassword from "../component/user/ForgotPassword";
@@ -22,6 +23,7 @@ constructor(props) {
                 <Route path="/" component={HomePage} exact={true} />
                  <Route path="/admin" component={AdminPage} exact={true} />
                 <Route path={"/cart"} component={Cart} exact={true}/>
+                <Route path={"/wishlist"} component={Wishlist} exact={true}/>
                 <Route path={"/orders/successful/:random"} component={OrderSuccessful} exact/>
                 <Route path={"/user/login"} component={SignUp} exact/>
                 <Route path={"/forgot/password"} component={ForgotPassword} exact/>

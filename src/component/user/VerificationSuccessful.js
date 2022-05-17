@@ -30,7 +30,7 @@ class VerificationSuccessful extends Component {
             <div>
                 <CbHeader/>
                 <Container className="verificationdiv">
-                    <img src={require("../../asset/verified-icon.png")} alt={"Verified"} id="verificationimg"/>
+                    <img src={require("../../assets/verified-icon.png")} alt={"Verified"} id="verificationimg"/>
                     <Typography variant="body2" color="textSecondary" component="p" id="verificationtypo">Congratulations! Your email address has been verified.</Typography>
                     <div className="loginverificationdiv">
                         <button id="loginverificationbtn" onClick={this.routeChange}>Login</button>

@@ -47,7 +47,7 @@ class Cart extends Component {
             changedCount: '',
             btnDisable: true,
             color: "grey",
-            totalPrice: "",
+            //totalPrice: "",
             totalValue:0,
             disableFlag: false,
             userData: [], customerData: "",

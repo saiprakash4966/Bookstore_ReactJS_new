@@ -76,7 +76,7 @@ h4 {
     padding-top: 2.2%;
     font-weight: bold;
     margin-left: 14%;
-    margin-top: -16%;
+    margin-top: -17%;
     display: flex;
     justify-content: flex-start;
 
@@ -1118,6 +1118,7 @@ ul.breadcrumb li a {
     #plus {
 
         font-size: 33px;
+        width: 100px;
     }
 
     #text {
@@ -1327,5 +1328,20 @@ ul.breadcrumb li a {
         width: 30%;
         margin-left: 0.01%;
     }
+    
 
 }
+.button {
+    display: inline-block;
+    border-radius: 2px;
+    background-color:rgb(165,42,42);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 8px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 10px;
+  }

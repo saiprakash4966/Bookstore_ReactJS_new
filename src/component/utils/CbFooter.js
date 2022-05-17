@@ -6,7 +6,7 @@ export class CbFooter extends Component {
         return (
             <div>
                 <div id="footer">
-                    <p id="footer-font"> &copy; Copyright 2020, The CB's BookStore Pvt Ltd. <br />
+                    <p id="footer-font"> &copy; Copyright 2020, The  BookStore Pvt Ltd. <br />
                         All Rights Reserved</p>
                 </div>
             </div>

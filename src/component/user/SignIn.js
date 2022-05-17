@@ -59,7 +59,9 @@ class SignIn extends Component {
 
     changeState = (event) => {
         this.setState({
-            [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value
+            
+            ,
         })
     }
 

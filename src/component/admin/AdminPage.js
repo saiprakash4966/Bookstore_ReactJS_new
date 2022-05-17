@@ -12,7 +12,7 @@ import CustomSnackBar from "../utils/CustomSnackBar";
 import IconButton from "@material-ui/core/IconButton";
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import CbFooter from "../utils/CbFooter";
-import Image from "../../asset/Bob.jpg";
+import Image from "../../assets/Bob.jpg";
 
 class AdminPage extends React.Component {
     constructor(props) {
